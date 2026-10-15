@@ -2,6 +2,8 @@
 
 The release was checked on Windows with Python 3.12.3, PyTorch 2.5.1, NumPy 2.3.1, pandas 2.3.2, and Matplotlib 3.10.6. CPU training used two threads. One-epoch CUDA checks also completed for all three variants on an NVIDIA GeForce RTX 4090.
 
+Clean Linux installations with Python 3.11 and 3.12 passed the full test and command-line workflow, including plotting and prediction. The Python 3.12 job also executed the notebook. [Initial verification run](https://github.com/shawny1b0609/gammaConv-net/actions/runs/38691977159).
+
 ## Checks performed
 
 - All 6,575 released data rows retain the original flow and rainfall fields exactly. The records are daily and ordered; calendar dates have been replaced with day indices.
@@ -28,6 +30,8 @@ python -m gammaconv.experiment --fractions 0.05 --epochs 150 --out runs/example
 The sample contains 164 consecutive training days, producing 134 input–target windows. All models use the same 702 validation targets. The preset gives the multi-kernel models larger hidden layers; this table is a run record, not a controlled comparison of kernel count alone. Validation selects the checkpoint. These scores are not independent test estimates, and the 150-epoch example does not reproduce the full paper benchmark.
 
 [Complete run records](example_runs.json) include the selected anonymous day range, losses, hyperparameters, scalers, fitted response parameters, and environment. The plotted dual-model [predictions](example_output/predictions.csv) and [training history](example_output/history.csv) are included for inspection. Model weights can be regenerated with the command above.
+
+The [release checkpoint archive](https://github.com/shawny1b0609/gammaConv-net/releases/tag/v0.1.0) contains all three fitted examples. Each checkpoint was extracted and reloaded, and its validation predictions were checked against the saved CSV. A SHA-256 file is supplied with the archive.
 
 To make the figures from that checkpoint:
 

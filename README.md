@@ -71,6 +71,14 @@ Use `--device cuda` with a compatible PyTorch CUDA installation. All commands de
 
 Each training run saves `model.pt`, `predictions.csv`, `history.csv`, and `run.json`. The last file records the configuration, split, scaler, data checksum, environment, fitted kernel parameters, and validation metrics. The checkpoint contains the best validation weights and its fitted scaler.
 
+The [v0.1.0 release](https://github.com/shawny1b0609/gammaConv-net/releases/tag/v0.1.0) also provides fitted example checkpoints for all three variants. Extract the archive into the repository and run:
+
+```bash
+python -m gammaconv.predict --checkpoint checkpoints/dual/model.pt --data data/series_a.csv --out runs/loaded.csv
+```
+
+These checkpoints come from the 150-epoch example below, not the paper's benchmark runs. The archive includes its license, run settings, predictions, and a SHA-256 checksum alongside the download.
+
 ## Example output
 
 ![One-day-ahead validation example on de-identified data](docs/figures/prediction.png)
