@@ -1,0 +1,98 @@
+[
+  {
+    "target": "doi",
+    "measurement_id": "2sHnKD876vQhH4lu300021JsP",
+    "created_at": "2026-10-15T06:09:49.247Z",
+    "country": "US",
+    "city": "Buffalo",
+    "network": "HostPapa",
+    "status": "finished",
+    "http_status": 302,
+    "redirect": "https://www.chndoi.org/Resolution/Handler?doi=10.14042/j.cnki.32.1309.2026.04.002",
+    "error": null
+  },
+  {
+    "target": "doi",
+    "measurement_id": "2sHnKD876vQhH4lu300021JsP",
+    "created_at": "2026-10-15T06:09:49.247Z",
+    "country": "US",
+    "city": "Los Angeles",
+    "network": "HostPapa",
+    "status": "finished",
+    "http_status": 302,
+    "redirect": "https://www.chndoi.org/Resolution/Handler?doi=10.14042/j.cnki.32.1309.2026.04.002",
+    "error": null
+  },
+  {
+    "target": "publisher",
+    "measurement_id": "2ilylhDDXHqbVeh6I00021JsP",
+    "created_at": "2026-10-15T06:09:48.725Z",
+    "country": "US",
+    "city": "Buffalo",
+    "network": "HostPapa",
+    "status": "failed",
+    "http_status": null,
+    "redirect": null,
+    "error": "Request timed out while establishing the TCP connection."
+  },
+  {
+    "target": "publisher",
+    "measurement_id": "2ilylhDDXHqbVeh6I00021JsP",
+    "created_at": "2026-10-15T06:09:48.725Z",
+    "country": "US",
+    "city": "Los Angeles",
+    "network": "HostPapa",
+    "status": "failed",
+    "http_status": null,
+    "redirect": null,
+    "error": "Request timed out while establishing the TCP connection."
+  },
+  {
+    "target": "resolver",
+    "measurement_id": "2Q8EsiKJCVFozg5Px00021JsP",
+    "created_at": "2026-10-15T06:09:02.302Z",
+    "country": "US",
+    "city": "Buffalo",
+    "network": "HostPapa",
+    "status": "finished",
+    "http_status": 200,
+    "redirect": null,
+    "error": null
+  },
+  {
+    "target": "resolver",
+    "measurement_id": "2Q8EsiKJCVFozg5Px00021JsP",
+    "created_at": "2026-10-15T06:09:02.302Z",
+    "country": "US",
+    "city": "Los Angeles",
+    "network": "HostPapa",
+    "status": "finished",
+    "http_status": 200,
+    "redirect": null,
+    "error": null
+  },
+  {
+    "target": "agris",
+    "measurement_id": "2M3aIi1Gs0sttxVlG00021JsP",
+    "created_at": "2026-10-15T06:09:50.150Z",
+    "country": "US",
+    "city": "Buffalo",
+    "network": "HostPapa",
+    "status": "finished",
+    "http_status": 200,
+    "redirect": null,
+    "error": null
+  },
+  {
+    "target": "agris",
+    "measurement_id": "2M3aIi1Gs0sttxVlG00021JsP",
+    "created_at": "2026-10-15T06:09:50.150Z",
+    "country": "US",
+    "city": "Los Angeles",
+    "network": "HostPapa",
+    "status": "finished",
+    "http_status": 200,
+    "redirect": null,
+    "error": null
+  }
+]

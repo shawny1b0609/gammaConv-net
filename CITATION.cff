@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "Please cite the paper when using GammaConv-Net in research."
+type: software
+title: "GammaConv-Net"
+version: 0.1.0
+authors:
+  - family-names: Yang
+    given-names: Yibo
+repository-code: "https://github.com/shawny1b0609/gammaConv-net"
+license-url: "https://github.com/shawny1b0609/gammaConv-net/blob/main/LICENSE"
+preferred-citation:
+  type: article
+  title: "Hydrological modeling with priors information and deep learning under small-sample conditions"
+  authors:
+    - family-names: Yang
+      given-names: Yibo
+    - family-names: Zhang
+      given-names: Jianyun
+    - family-names: Liu
+      given-names: Jinping
+    - family-names: Jiang
+      given-names: Kaiyao
+  journal: "Advances in Water Science"
+  year: 2026
+  volume: 37
+  issue: 4
+  start: 607
+  end: 618
+  doi: "10.14042/j.cnki.32.1309.2026.04.002"
+  url: "https://skxjz.nhri.cn/article/doi/10.14042/j.cnki.32.1309.2026.04.002"

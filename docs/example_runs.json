@@ -1,0 +1,260 @@
+{
+  "single": {
+    "config": {
+      "data": "series_a.csv",
+      "model": "single",
+      "epochs": 150,
+      "hidden": 64,
+      "seq": 30,
+      "lag": 30,
+      "split": 0.818,
+      "fraction": 0.05,
+      "batch": 32,
+      "lr": 0.0008,
+      "wd": 0.0005,
+      "patience": 300,
+      "seed": 42,
+      "device": "cpu",
+      "threads": 2,
+      "loss": "bands",
+      "peak": 25,
+      "low": 18,
+      "mid": 12
+    },
+    "data_sha256": "357ceb93a9cf45984aaacf9c76331e714cee2659c7473f6a0edc48b03fe76e7f",
+    "split": {
+      "rows": 4018,
+      "split_row": 3286,
+      "train_start_day": 2272,
+      "train_end_day": 2435,
+      "train_windows": 134,
+      "valid_windows": 702,
+      "valid_first_target_day": 3317,
+      "scaling": "full chronological training prefix",
+      "selection": "contiguous high-flow block"
+    },
+    "scale": {
+      "rain": [
+        0.0,
+        94.0
+      ],
+      "flow": [
+        134.0,
+        16400.0
+      ]
+    },
+    "best_epoch": 139,
+    "epochs_run": 150,
+    "validation": {
+      "nse": 0.6485573367873948,
+      "rmse": 910.1844749601148,
+      "mae": 577.8030944181835
+    },
+    "parameters": 28227,
+    "kernels": {
+      "num_kernels": 1,
+      "kernel_params": [
+        [
+          1.6138571500778198,
+          1.3761614561080933
+        ]
+      ]
+    },
+    "environment": {
+      "python": "3.12.3",
+      "torch": "2.5.1",
+      "numpy": "2.3.1",
+      "pandas": "2.3.2",
+      "device": "cpu",
+      "platform": "Windows"
+    }
+  },
+  "dual": {
+    "config": {
+      "data": "series_a.csv",
+      "model": "dual",
+      "epochs": 150,
+      "hidden": 76,
+      "seq": 30,
+      "lag": 30,
+      "split": 0.818,
+      "fraction": 0.05,
+      "batch": 32,
+      "lr": 0.0008,
+      "wd": 0.0005,
+      "patience": 300,
+      "seed": 42,
+      "device": "cpu",
+      "threads": 2,
+      "loss": "bands",
+      "peak": 25,
+      "low": 18,
+      "mid": 12
+    },
+    "data_sha256": "357ceb93a9cf45984aaacf9c76331e714cee2659c7473f6a0edc48b03fe76e7f",
+    "split": {
+      "rows": 4018,
+      "split_row": 3286,
+      "train_start_day": 2272,
+      "train_end_day": 2435,
+      "train_windows": 134,
+      "valid_windows": 702,
+      "valid_first_target_day": 3317,
+      "scaling": "full chronological training prefix",
+      "selection": "contiguous high-flow block"
+    },
+    "scale": {
+      "rain": [
+        0.0,
+        94.0
+      ],
+      "flow": [
+        134.0,
+        16400.0
+      ]
+    },
+    "best_epoch": 119,
+    "epochs_run": 150,
+    "validation": {
+      "nse": 0.8112375963358212,
+      "rmse": 667.0523711210559,
+      "mae": 528.3986044511666
+    },
+    "parameters": 39722,
+    "kernels": {
+      "model_type": "Dual Kernel",
+      "num_kernels": 2,
+      "kernel_params": {
+        "fast_kernel": [
+          0.8935478329658508,
+          3.410261869430542
+        ],
+        "slow_kernel": [
+          3.0797202587127686,
+          0.7888329029083252
+        ],
+        "rain_threshold_low": 0.1647939831018448,
+        "rain_threshold_high": 0.4000000059604645,
+        "moisture_effect": 0.6605908274650574,
+        "base_weights": [
+          0.22044511139392853,
+          0.7795549035072327
+        ],
+        "intensity_weights": [
+          0.7124465703964233,
+          0.2875533998012543
+        ]
+      },
+      "kernel_types": [
+        "Fast (Surface Runoff)",
+        "Slow (Groundwater)"
+      ]
+    },
+    "environment": {
+      "python": "3.12.3",
+      "torch": "2.5.1",
+      "numpy": "2.3.1",
+      "pandas": "2.3.2",
+      "device": "cpu",
+      "platform": "Windows"
+    }
+  },
+  "triple": {
+    "config": {
+      "data": "series_a.csv",
+      "model": "triple",
+      "epochs": 150,
+      "hidden": 89,
+      "seq": 30,
+      "lag": 30,
+      "split": 0.818,
+      "fraction": 0.05,
+      "batch": 32,
+      "lr": 0.0008,
+      "wd": 0.0005,
+      "patience": 300,
+      "seed": 42,
+      "device": "cpu",
+      "threads": 2,
+      "loss": "bands",
+      "peak": 25,
+      "low": 18,
+      "mid": 12
+    },
+    "data_sha256": "357ceb93a9cf45984aaacf9c76331e714cee2659c7473f6a0edc48b03fe76e7f",
+    "split": {
+      "rows": 4018,
+      "split_row": 3286,
+      "train_start_day": 2272,
+      "train_end_day": 2435,
+      "train_windows": 134,
+      "valid_windows": 702,
+      "valid_first_target_day": 3317,
+      "scaling": "full chronological training prefix",
+      "selection": "contiguous high-flow block"
+    },
+    "scale": {
+      "rain": [
+        0.0,
+        94.0
+      ],
+      "flow": [
+        134.0,
+        16400.0
+      ]
+    },
+    "best_epoch": 123,
+    "epochs_run": 150,
+    "validation": {
+      "nse": 0.7993003239892899,
+      "rmse": 687.8211382323567,
+      "mae": 488.42157688137263
+    },
+    "parameters": 53938,
+    "kernels": {
+      "num_kernels": 3,
+      "kernel_params": [
+        [
+          0.7302404642105103,
+          3.0800485610961914
+        ],
+        [
+          1.665385365486145,
+          1.3441697359085083
+        ],
+        [
+          3.6886982917785645,
+          0.5944700241088867
+        ]
+      ],
+      "kernel_types": [
+        "Fast (Surface)",
+        "Medium (Subsurface)",
+        "Slow (Groundwater)"
+      ],
+      "allocation_mechanism": {
+        "rain_threshold_low": 0.05400487408041954,
+        "rain_threshold_high": 0.4000000059604645,
+        "moisture_effect": 0.6258602142333984,
+        "base_weights": [
+          0.20431941747665405,
+          0.4547308385372162,
+          0.3409497141838074
+        ],
+        "intensity_weights": [
+          0.5918350219726562,
+          0.231573224067688,
+          0.17659178376197815
+        ]
+      }
+    },
+    "environment": {
+      "python": "3.12.3",
+      "torch": "2.5.1",
+      "numpy": "2.3.1",
+      "pandas": "2.3.2",
+      "device": "cpu",
+      "platform": "Windows"
+    }
+  }
+}

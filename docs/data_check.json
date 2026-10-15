@@ -1,0 +1,16 @@
+{
+  "series_a.csv": {
+    "rows": 4018,
+    "numeric_text_unchanged": true,
+    "daily_spacing_preserved": true,
+    "calendar_dates_removed": true,
+    "sha256": "357ceb93a9cf45984aaacf9c76331e714cee2659c7473f6a0edc48b03fe76e7f"
+  },
+  "series_b.csv": {
+    "rows": 2557,
+    "numeric_text_unchanged": true,
+    "daily_spacing_preserved": true,
+    "calendar_dates_removed": true,
+    "sha256": "74071b34b3a4ae320dddf969f841a909bbb6e3de2b9c31d2c4fe448f4bd4b54a"
+  }
+}

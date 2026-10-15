@@ -1,0 +1,52 @@
+GammaConv-Net Noncommercial Research License, version 1.0
+
+Copyright (c) 2026 Yibo Yang. All rights reserved except as granted below.
+
+1. Scope
+This license covers the code, model checkpoints, documentation, and example data in this repository and its releases,
+except material with a separate notice. It does not cover the referenced journal
+article, third-party dependencies, or third-party trademarks.
+
+2. Permission
+You may access, copy, run, study, and modify the covered material solely for
+noncommercial research. You may share unmodified or modified copies for that
+same purpose, provided that you retain this license and all copyright and
+attribution notices, clearly identify your modifications, and distribute the
+covered material and your modifications under these same terms without adding
+restrictions that conflict with them.
+
+3. Commercial use and other uses
+Commercial use requires prior written permission from the copyright holder.
+Commercial use includes use in a product or service offered for compensation,
+paid consulting or contract delivery, commercial internal operations, or research
+primarily directed toward commercial advantage. Public availability, academic
+affiliation, or use of only a modified portion does not waive this requirement.
+Uses not expressly permitted by this license require separate permission.
+
+4. Attribution and integrity
+Retain the repository name and a link to the original repository in redistributed
+copies. Do not misrepresent the origin of the material or imply endorsement by
+the copyright holder. In research publications using the method, cite the paper
+identified in CITATION.cff. Describe modified methods as modified methods.
+
+5. Data
+The example data are de-identified demonstration series. Do not represent them
+as observations from any particular basin, station, or calendar period. This
+license grants only rights the copyright holder is entitled to grant; it does
+not grant rights in third-party materials or override applicable law.
+
+6. No warranty or liability
+THE MATERIAL IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR
+NONINFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, THE COPYRIGHT HOLDER SHALL
+NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE
+MATERIAL OR ITS USE.
+
+7. Termination and reserved rights
+Permission under this license terminates automatically if you violate its terms.
+All rights not expressly granted are reserved. No patent or trademark license is
+granted. Separate permissions must be obtained from the copyright holder through
+the contact route on https://github.com/shawny1b0609/gammaConv-net.
+
+This is a source-available research license, not an OSI-approved open-source
+license. The commercial-use restriction is intentional.

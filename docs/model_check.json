@@ -1,0 +1,18 @@
+{
+  "dual_kernel_model.py": {
+    "output_max_error": 0.0,
+    "gradient_match": true
+  },
+  "hydrological_model.py": {
+    "output_max_error": 0.0,
+    "gradient_match": true
+  },
+  "improved_water_balanced_kernel.py": {
+    "output_max_error": 0.0,
+    "gradient_match": true
+  },
+  "simplified_physics_model.py": {
+    "output_max_error": 0.0,
+    "gradient_match": true
+  }
+}
