@@ -4,7 +4,7 @@ The scientific overview in [paper.md](paper.md) follows the manuscript. This pag
 
 ## Inputs and prediction
 
-The three main models take rainfall and flow tensors of shape `(batch, steps, 1)`. The supplied runner uses a 30-day history to predict flow on the next day. Each validation window uses observed past flow, so evaluation is a sequence of one-day-ahead predictions, not an autonomous multi-day simulation. The main models require complete input windows; their retained `flow_mask` argument is not used.
+The three main models take rainfall and flow tensors of shape `(batch, steps, 1)`. The supplied runner uses 30 observed days to predict next-day flow. Validation follows the same one-day-ahead protocol, with observed flow in each input window. Complete windows are required; `flow_mask` is retained as an unused compatibility argument.
 
 Rainfall and flow are scaled separately with minima and maxima from the chronological training prefix. Validation values may fall outside `[0, 1]` and are not clipped. The final Softplus layer produces a nonnegative prediction on the normalized scale; the saved flow scaler converts it back to the supplied units.
 
@@ -20,11 +20,11 @@ $$
 
 The common density prefactor cancels under normalization. Parameters are clamped to component-specific bounds, then learned together with the network weights. The implementation uses a reversed kernel in `conv1d` and crops the padded output to the input length. This gives a causal convolution for a fixed kernel.
 
-The manuscript calls β a scale parameter, but its density and the code use `exp(-βt)`: β is the **rate** in this parameterization. The manuscript's `α/β` is the continuous Gamma mean. The mean of the finite, discretized response is instead `sum(j * g_j)`; the two need not coincide, especially when α is below one and the lag-zero term dominates.
+The density and code use `exp(-βt)`, making β the **rate** parameter. The manuscript labels it a scale parameter. The continuous Gamma mean is `α/β`; the finite discrete mean lag is `sum(j * g_j)`. Discretization can produce substantial differences, especially for α below one, when the lag-zero term dominates.
 
 ![Fitted discrete Gamma responses](figures/kernels.png)
 
-This figure shows the fitted weights from the documented example run, including the lag-zero weight. It is generated from the saved model, not traced from the paper.
+Fitted weights from the saved dual-model example, including lag zero. The [three-model comparison](figures/model_kernels.png) shows all variants.
 
 ## Multiple responses
 
@@ -34,15 +34,15 @@ Base and intensity weights are normalized with softmax. Sigmoid factors, togethe
 
 ![Rainfall allocation in the fitted dual-kernel example](figures/allocation.png)
 
-The blank regions are infeasible combinations of latest rainfall and seven-day mean when normalized rainfall lies in `[0, 1]`. The response labels describe the intended hydrological interpretation. No separate observations of surface flow or groundwater flow are fitted.
+Blank regions are infeasible combinations when each normalized rainfall input lies in `[0, 1]`. The component labels express the intended hydrological interpretation; supervision uses observed total flow.
 
-Normalization preserves the allocation across components and constrains each response kernel. Cropping removes the response tail outside the window, and the final neural prediction is unconstrained by a catchment-scale balance equation. The code therefore does not enforce exact water-volume conservation in the final discharge prediction.
+Normalization constrains component allocation and kernel sums. Cropping truncates the response tail outside the window. Final flow is learned through the fusion network without a catchment-scale water-balance constraint.
 
 ## Training and evaluation
 
 The split is chronological: `floor(0.818 * number_of_rows)` records form the training prefix; the remainder forms the validation suffix. Windows are made separately within each part, so the first 30 validation records provide history and are not validation targets. For `series_a.csv`, this gives 3,286 training-prefix records and 702 validation targets.
 
-For a fraction below one, the experiment searches every contiguous block of the requested length within the training prefix. Its original score emphasizes high flow: the maximum and 90th percentile for fractions up to 10%, with mean, variability, and range terms added at larger fractions. Block selection and scaling both inspect the full training prefix. This is an experiment in fitting selected sample windows, not a setting where the unselected training observations are unavailable.
+For a fraction below one, the experiment searches every contiguous block of the requested length within the training prefix. Its score emphasizes high flow: the maximum and 90th percentile for fractions up to 10%, with mean, variability, and range terms added at larger fractions. The fraction limits the fitted windows; block selection and scaling use the full training prefix.
 
 Two original training paths are retained:
 
@@ -51,14 +51,14 @@ Two original training paths are retained:
 | `gammaconv.train` | Sample-size-dependent high-, middle-, and low-flow weights; AdamW; cosine learning-rate decay; gradient clipping |
 | `gammaconv.experiment` | Sum of weighted mean squared errors in three batch-relative flow bands; AdamW with a fixed learning rate; original fraction-dependent hyperparameters |
 
-The experiment uses the batch 80th and 30th percentiles to form high- and low-flow groups. Its hyperparameter table is in [experiment.py](../gammaconv/experiment.py). The manuscript's Equation 12 describes a different high-flow weighting expression with an 85th-percentile threshold. The released scripts preserve the supplied code's losses; they should not be described as a literal implementation of that equation.
+The experiment uses the batch 80th and 30th percentiles to form high- and low-flow groups. Hyperparameters are in [experiment.py](../gammaconv/experiment.py). The scripts retain the original code's losses, which differ from the 85th-percentile weighting expression in manuscript Equation 12.
 
-Validation is checked after every epoch. The checkpoint with the lowest validation RMSE is copied and restored; on fixed nonconstant targets this is equivalent to maximizing NSE. Early stopping uses the configured number of epochs without improvement. NSE is undefined for constant targets and is written as JSON `null`; RMSE still supports checkpoint selection. The reported validation scores are used in model selection and are not independent test estimates.
+Validation is checked after every epoch. The checkpoint with the lowest validation RMSE is copied and restored; on fixed nonconstant targets this also maximizes NSE. Early stopping uses the configured patience. For constant targets, NSE is recorded as JSON `null` and selection uses RMSE. Reported scores describe the validation sequence used for checkpoint selection.
 
 ## Reproducibility and scope
 
-The runner records seeds, dependency versions, data checksum, scaling parameters, and selected day indices. CPU is the default. Fixed seeds aid repeatability within an environment; exact equality across PyTorch versions or CPU and GPU backends is not assumed.
+The runner records seeds, dependency versions, data checksum, scaling parameters, and selected day indices. CPU is the default. Fixed seeds support repeatability within an environment; results may vary across PyTorch versions and processing backends.
 
-The three main architectures and all original standalone model/loss modules are included. The earlier correction-based architecture in `hydrological_model.py` is retained for reference; it is not one of the three experiment variants and contains modules unused by its forward pass. The original notebook workflows are consolidated into a short English walkthrough and shared training/plotting functions.
+The three experiment architectures and all original standalone model/loss modules are included. `hydrological_model.py` retains an earlier correction-based architecture with some unused modules. The notebook workflows are consolidated into an English walkthrough and shared training/plotting functions.
 
-The release adds input validation, portable paths, saved run records, checkpoint inference, and automated checks. It fixes the original CPU checkpoint aliasing and the training entry point's failure to restore the best weights. Model calculations, component bounds, and the small-sample block-scoring rule remain unchanged. The XAJ and MLP comparison experiments are outside this model repository; the full paper benchmark is not asserted to be reproduced here.
+The release adds input validation, portable paths, saved run records, checkpoint inference, and automated checks. It fixes CPU checkpoint aliasing and restores the best training checkpoint. Model calculations, component bounds, and block selection remain unchanged. Executable experiments cover the three GammaConv-Net variants; XAJ and MLP results are supplied as cited manuscript tables.

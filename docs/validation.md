@@ -27,9 +27,9 @@ python -m gammaconv.experiment --fractions 0.05 --epochs 150 --out runs/example
 | Dual | 76 | 119 | 0.8112 | 667.05 | 528.40 |
 | Triple | 89 | 123 | 0.7993 | 687.82 | 488.42 |
 
-The sample contains 164 consecutive training days, producing 134 input–target windows. All models use the same 702 validation targets. The preset gives the multi-kernel models larger hidden layers; this table is a run record, not a controlled comparison of kernel count alone. Validation selects the checkpoint. These scores are not independent test estimates, and the 150-epoch example does not reproduce the full paper benchmark.
+The sample contains 164 consecutive training days, producing 134 input–target windows. All models use the same 702 validation targets. Hidden-layer sizes follow the original fraction-dependent preset, so the comparison includes both kernel structure and network size. Validation RMSE selects the checkpoint, and the reported metrics describe performance on that selection sequence. The runs document the 150-epoch release example.
 
-[Complete run records](example_runs.json) include the selected anonymous day range, losses, hyperparameters, scalers, fitted response parameters, and environment. The plotted dual-model [predictions](example_output/predictions.csv) and [training history](example_output/history.csv) are included for inspection. Model weights can be regenerated with the command above.
+[Complete run records](example_runs.json) include the selected day range, losses, hyperparameters, scalers, fitted parameters, and environment. [Figure tables](figure_data/README.md) contain predictions, response kernels, and allocation weights for all three models. The dual-model [training history](example_output/history.csv) is also included.
 
 The [release checkpoint archive](https://github.com/shawny1b0609/gammaConv-net/releases/tag/v0.1.0) contains all three fitted examples. Each checkpoint was extracted and reloaded, and its validation predictions were checked against the saved CSV. A SHA-256 file is supplied with the archive.
 
@@ -39,4 +39,6 @@ To make the figures from that checkpoint:
 python -m gammaconv.plot --run runs/example/0.05/dual --out runs/example/figures
 ```
 
-The script saves PNG previews at 300 dpi and vector PDF files. No dates, site labels, or local paths are placed in the plots. Exact numeric agreement across different hardware or library versions is not guaranteed.
+The script saves 300 dpi PNG previews and vector PDF files using anonymous day indices. Numerical results may vary across hardware and library versions.
+
+The [README figures](figures/README.md) can also be generated directly from the public tables with `python examples/make_readme_figures.py`.

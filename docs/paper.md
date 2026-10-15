@@ -1,6 +1,6 @@
 # Paper overview
 
-This English overview follows the author's second revised manuscript of **融合先验信息与深度学习的小样本水文建模**, published as *Hydrological modeling with priors information and deep learning under small-sample conditions* in *Advances in Water Science*. It condenses the research argument and method without adding new experimental claims. [Journal record](https://skxjz.nhri.cn/article/doi/10.14042/j.cnki.32.1309.2026.04.002).
+This overview summarizes the author's second revised manuscript of **融合先验信息与深度学习的小样本水文建模**, published as *Hydrological modeling with priors information and deep learning under small-sample conditions* in *Advances in Water Science*. [Journal record](https://skxjz.nhri.cn/article/doi/10.14042/j.cnki.32.1309.2026.04.002).
 
 ## Research question
 
@@ -20,7 +20,7 @@ The study uses a loss that emphasizes high-flow errors and AdamW optimization. I
 
 The manuscript uses continuous training periods at fractions of 5%, 10%, 25%, 50%, 75%, and 100%, prioritizing periods containing major high-flow events. All sample sizes are assessed on the same later validation period. This preserves the temporal continuity of the selected hydrological processes (Section 2.2).
 
-The manuscript reports that the multi-kernel models retain an efficiency of about 0.86 at the 5% sample size, compared with 0.67 for Xin'anjiang and 0.73 for the multilayer perceptron. Under full-sample conditions, multi-kernel efficiency exceeds 0.90. These are findings from the paper, also described in the [institutional abstract](https://www.nhri.cn/xsjl/art/2026/art_01153cb27bf047df949ebc1c4c8aaa03.html); they are not scores from the short runs supplied here.
+Table 1 reports NSE 0.86 for both multi-kernel models at the 5% sample size, compared with 0.67 for Xin'anjiang and 0.73 for the multilayer perceptron. At the 100% fraction, both multi-kernel models reach NSE 0.90 at the table's reported precision. The [performance chart](figures/paper_performance.png) presents all six fractions.
 
 ## Interpretation
 
@@ -28,6 +28,4 @@ The paper examines the fitted Gamma parameters and allocation weights to interpr
 
 ## Relation to this release
 
-The repository preserves the original model calculations and provides executable training and analysis tools. Implementation details and differences between the manuscript notation and the supplied scripts are documented in [method.md](method.md). The de-identified CSV files do not represent any particular basin. The short release-validation runs are documented separately in [validation.md](validation.md).
-
-The manuscript files, review correspondence, and publisher-owned article are not redistributed. Use the [DOI](https://doi.org/10.14042/j.cnki.32.1309.2026.04.002) or [alternative article records](paper_access.md) to locate the publication.
+The repository preserves the original model calculations and provides executable training and analysis tools. [Implementation notes](method.md) describe the supplied scripts; [release validation](validation.md) records the fitted examples on de-identified data. The publication is available through its [DOI](https://doi.org/10.14042/j.cnki.32.1309.2026.04.002) and [alternative article records](paper_access.md).

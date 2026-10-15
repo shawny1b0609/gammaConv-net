@@ -4,7 +4,7 @@
 
 The DOI is registered and points to a Chinese DOI resolution page offering CNKI links. A working DOI redirect alone does not establish access to the article's full text.
 
-HTTP checks were made on 15 October 2026 through [Globalping](https://globalping.io/), using two probes reported in Buffalo and Los Angeles, United States. The individual endpoints were checked separately; these were network requests, not an interactive browser or subscription-access test.
+HTTP checks were made on 15 October 2026 through [Globalping](https://globalping.io/), using two probes reported in Buffalo and Los Angeles, United States. Each endpoint was checked separately for its HTTP response.
 
 | Endpoint | Buffalo | Los Angeles | Interpretation |
 | --- | --- | --- | --- |
@@ -13,7 +13,7 @@ HTTP checks were made on 15 October 2026 through [Globalping](https://globalping
 | Journal article page | Connection timeout | Connection timeout | Full-text access through this page was not confirmed |
 | FAO AGRIS English record | HTTP 200 | HTTP 200 | Bibliographic record is reachable |
 
-The compact [measurement record](paper_access.json) preserves locations, time, result status, and measurement identifiers. Probe locations are supplied by Globalping. Availability can change; these results are not a guarantee for every US network.
+The [measurement record](paper_access.json) preserves probe locations supplied by Globalping, the check time, response status, and measurement identifiers. Availability varies by network and time.
 
 Useful entry points:
 
